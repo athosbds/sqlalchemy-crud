@@ -1,2 +1,27 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request, url_for
 from . import route_dp
+from ..models import create_user, update_user, delete_user, list_users
+
+@route_dp.route('/')
+def homepage():
+    return render_template('base.html')
+
+@route_dp.route('/users', methods=['GET'])
+def users_request():
+    users = list_users()
+    return render_template('users.html', users=users)
+
+@route_dp.route('/creating', methods=['GET', 'POST'])
+def creating_user():
+    if request.method == 'POST':
+        name = request.get('name')
+        age = request.get('age')
+        email = request.get('email')
+        create_user(name, age, email)
+        return redirect(url_for('users_request'))
+    return render_template('user_creation.html')
+
+@route_dp.route('/deleting<int:user_id>', methods=['POST'])
+def deleting_user(user_id):
+    delete_user(user_id)
+    return redirect(url_for('/users_request'))

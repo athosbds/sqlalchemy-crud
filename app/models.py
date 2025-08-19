@@ -14,6 +14,7 @@ def create_user(name, email, age):
     new = User(name, email, age)
     db.session.add(new)
     db.session.commit()
+    return new
 
 def update_user(id, name=None, email=None, age=None):
     user_update = User.query.filter(User.id == id).first()
@@ -25,3 +26,16 @@ def update_user(id, name=None, email=None, age=None):
         if age:
             user_update.age = age
         db.session.commit()
+    return user_update
+
+def delete_user(id):
+    user_delete = User.query.filter(User.id == id)
+    if user_delete:
+        db.session.delete(user_delete)
+        db.session.commit()
+    return user_delete
+
+def list_users():
+    users = User.query.all()
+    return users
+
