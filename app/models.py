@@ -8,6 +8,10 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     age = db.Column(db.Integer, nullable=False)
+    def __init__(self, name, email, age):
+        self.name = name
+        self.email = email 
+        self.age = age
 print('works it.')
 
 def create_user(name, email, age):

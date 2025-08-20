@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criando Usuário</title>
 </head>
-<body>
+<body style="text-align: center;">
     <h1>Criando Usuário</h1>
-    
+    <form action="/creating"  method="post">
+        <label for="name">Nome </label>
+        <input type="text" name="name" id="name" required><br><br>
+
+        <label for="email">Email </label>
+        <input type="email" name="email" id="email" required> <br> <br>
+
+        <label for="birthyear">Ano de Nascimento </label>
+        <input type="number" name="birthyear" id="birthyear" min="1900" max="2025" required><br><br>
+        <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>
