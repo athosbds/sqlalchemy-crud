@@ -9,10 +9,15 @@
     <h1>Usuários</h1>
     {% if users %}
         {% for user in users %}
-            <li> ID: {{user.id}} - Nome: {{user.name}} - Idade: {{user.age}} - Email: {{user.email}}</li>
+            <p>
+                ID: {{ user.id }} - Nome: {{ user.name }} - Idade: {{ user.age }} - Email: {{ user.email }}
+            </p>
+            <form action="{{ url_for('routes.deleting_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                <button type="submit">Deletar</button>
+            </form>
         {% endfor %}
     {% else %}
-    <p>Nenhum Usuário Cadastrado</p>
+        <p>Nenhum Usuário Cadastrado</p>
     {% endif %}
 
     <a href="/">Página Inicial</a>

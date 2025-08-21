@@ -19,5 +19,8 @@
 
         <button type="submit">Enviar</button>
     </form>
+    {% if email_exists %}
+        <p>{{ email_exists }}</p>
+    {% endif %}
 </body>
 </html>
