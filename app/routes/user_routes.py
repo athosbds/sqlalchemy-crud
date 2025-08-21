@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, request, url_for
 from . import route_dp
 from ..models import create_user, update_user, delete_user, list_users
-from datetime import datetime
 
 @route_dp.route('/')
 def homepage():
@@ -17,14 +16,8 @@ def creating_user():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
-        birthday_str = request.form.get('birth-year')
-        age = None
-        try:
-            birthday_year = int(birthday_str)  
-            current_year = datetime.now().year
-            age = current_year - birthday_year   
-        except ValueError:
-            return "Ano de nascimento inválido"
+        age = request.form.get('age')
+        age = int(age)
         create_user(name, email, age)
         return redirect(url_for('users_request'))
     return render_template('user_creation.html')
