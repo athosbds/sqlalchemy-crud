@@ -33,11 +33,12 @@ def update_user(id, name=None, email=None, age=None):
     return user_update
 
 def delete_user(id):
-    user_delete = User.query.filter(User.id == id)
+    user_delete = User.query.filter(User.id == id).first()
     if user_delete:
         db.session.delete(user_delete)
         db.session.commit()
-    return user_delete
+        return True
+    return False
 
 def list_users():
     users = User.query.all()

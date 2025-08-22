@@ -31,3 +31,17 @@ def creating_user():
 def deleting_user(user_id):
     delete_user(user_id)
     return redirect(url_for('routes.users_request'))
+
+@route_dp.route('/updating<int:user_id>', methods=['GET', 'POST'])
+def updating_user(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        error = f'Erro ao encontrar {user_id}'
+        return redirect(url_for('routes.users_request', error=error))
+    if request.method == 'POST':
+        new_name = request.form.get('new_name')
+        new_email = request.form.get('new_email')
+        new_age = request.form.get('new_age')
+        update_user(user_id, new_name, new_email, new_age)
+        return redirect(url_for('routes.users_request'))
+    return render_template('updating_user.html', user=user)

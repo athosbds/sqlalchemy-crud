@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizando Usuário</title>
+</head>
+<body style="text-align: center;">
+    <h1>Atualizando Usuário</h1> {{ user.name }}
+    <form action="{{ url_for('routes.updating_user', user_id=user.id) }}"  method="post">
+        <label for="new_name">Nome </label>
+        <input type="text" name="new_name" id="new_name" required><br><br>
+
+        <label for="new_name">Email </label>
+        <input type="email" name="new_email" id="new_name" required> <br> <br>
+
+        <label for="age">Idade </label>
+        <input type="number" name="new_age" id="new_age" required><br><br>
+
+        <button type="submit">Enviar</button>
+    </form>
+    {% if email_exists %}
+        <p>{{ email_exists }}</p>
+    {% endif %}
+</body>
+</html>
