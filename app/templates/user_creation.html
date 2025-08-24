@@ -4,23 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criando Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body style="text-align: center;">
-    <h1>Criando Usuário</h1>
-    <form action="/creating"  method="post">
-        <label for="name">Nome </label>
-        <input type="text" name="name" id="name" required><br><br>
-
-        <label for="email">Email </label>
-        <input type="email" name="email" id="email" required> <br> <br>
-
-        <label for="age">Idade </label>
-        <input type="number" name="age" id="age" required><br><br>
-
-        <button type="submit">Enviar</button>
-    </form>
-    {% if email_exists %}
-        <p>{{ email_exists }}</p>
-    {% endif %}
+<body>
+    <div class="container d-flex flex-column align-items-center mt-5 ">
+        <h1 class="mb-4">Criando Usuário</h1>
+        <form action="/creating" method="post" class="w-50 d-flex flex-column gap-2">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Idade</label>
+            <input type="number" name="age" id="age" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100">Enviar</button>
+        <a href="/" class="btn btn-secondary btn-lg w-100">Voltar Página Inicial</a>
+        </form>
+        {% if email_exists %}
+            <div class="alert alert-danger mt-3 w-50 text-center" role="alert">
+                {{ email_exists }}
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>
