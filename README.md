@@ -1,7 +1,8 @@
 # 📌 CRUD com Flask + SQLAlchemy + MySQL
 
 Este projeto é um **CRUD (Create, Read, Update, Delete)** desenvolvido em **Python** utilizando o **Flask**, **SQLAlchemy** e **MySQL**.  
-O objetivo é mostrar como conectar o Flask a um banco de dados relacional e manipular registros de forma simples.
+O objetivo é mostrar como conectar o Flask a um banco de dados relacional e manipular registros de forma simples. 
+Frontend feito totalmente com BootStrap.
 
 ---
 
